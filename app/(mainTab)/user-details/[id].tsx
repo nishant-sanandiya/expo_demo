@@ -1,17 +1,10 @@
-import { router } from "expo-router";
-import { useEffect } from "react";
+import { useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 
 export default function Index() {
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      router.replace({
-        pathname :"/(mainTab)"
-      })
-    },2000)
-  },[])
-
+  const {id} = useLocalSearchParams();
+  
   return (
     <View
       style={{
@@ -20,7 +13,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Splash  Screen</Text>
+      <Text>{id ? 'user details screen '+ " id :- "+id : 'User Not Found'}</Text>
     </View>
   );
 }
